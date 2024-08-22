@@ -10,13 +10,23 @@ class Todo:
     def mark_completed(self):
         self.completed = True
 
-    def add_tag(self, tag: str):
-        self.tags.insert(tag)
+    def add_tag(self, tag):
+        if tag not in self.tags:
+            self.tags.append(tag)
+        else:
+            print('Elemento repetido')
+
+    def __str__(self):
+        return f'{self.code_id} - {self.title}'
 
 prueba = Todo(1, 'hola', 'jaja')
-print(prueba.completed)
-prueba.mark_completed()
-print(prueba.completed)
 print(prueba.tags)
 prueba.add_tag('David')
+print(prueba.tags)
+prueba.add_tag('David')
+print(prueba.tags)
+print(prueba.__str__())
 
+class TodoBook:
+    def __init__(self):
+        todos = {}
